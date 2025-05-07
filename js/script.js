@@ -1,72 +1,90 @@
-// let imageArray = [];
-// var selectedImage = document.getElementById("image-view");
-// var displayImages = document.getElementById("display-images");
+// NOTE Constants and Variables
 
-const formatTypes = [
-  "0",
-  "00",
-  "000",
-  "0000",
-  "00000",
-  "000000",
-  "0000000",
-  "00000000",
-  "000000000",
-  "0000000000",
-];
-
+const formatTypes = ["0", "00", "000", "0000"];
 const fileTypes = [".png", ".jpg"];
+const imageStore = ["image001", "image002", "image003", "image004"];
 
+const selectedImage = document.getElementById("image-view");
+const displayImages = document.getElementById("display-images");
 const prefixField = document.getElementById("input-prefix-type");
 const formatField = document.getElementById("format-type");
 const fileTypeField = document.getElementById("file-type");
+const jpgButton = document.getElementById("jpg-file-type-btn");
+const pngButton = document.getElementById("png-file-type-btn");
 const imageNameOutput = document.getElementById("image-name-output");
-const inputStores = [];
-let word1 = "";
-let word2 = "";
-let word3 = "";
+const submit = document.getElementById("submit-download");
+
+let prefix = "";
+let format = "";
+let filetype = "";
 
 // NOTE Functionality for user to display the naming style they want to rename images.
 
 imageNameOutput.innerText = "...";
 
-prefixField.onchange = (e) => {
-  word1 = e.target.value;
-  imageNameOutput.innerText = word1 + word2 + word3;
-};
+prefixField.addEventListener("change", (e) => {
+  prefix = e.target.value;
+  imageNameOutput.innerText = prefix + format + filetype;
+});
 
-formatField.onchange = (e) => {
-  word2 = e.target.value;
-  imageNameOutput.innerText = word1 + word2 + word3;
-};
+formatField.addEventListener("change", (e) => {
+  format = e.target.value;
+  imageNameOutput.innerText = prefix + format + filetype;
+});
 
 fileTypeField.addEventListener("click", (e) => {
-  word3 = e.target.value;
-  imageNameOutput.innerText = word1 + word2 + word3;
+  const hexcode = ["#ededed", "#ffffff", "#949494", "#000000"];
+
+  filetype = e.target.value;
+  imageNameOutput.innerText = prefix + format + filetype;
+
+  if (filetype === fileTypes[0]) {
+    pngButton.style.backgroundColor = hexcode[0];
+    jpgButton.style.backgroundColor = hexcode[1];
+    pngButton.style.color = hexcode[3];
+    jpgButton.style.color = hexcode[2];
+  }
+  if (filetype === fileTypes[1]) {
+    jpgButton.style.backgroundColor = hexcode[0];
+    pngButton.style.backgroundColor = hexcode[1];
+    jpgButton.style.color = hexcode[3];
+    pngButton.style.color = hexcode[4];
+  }
 });
+
+function submitNameChange() {
+  if (prefix.length === 0 || format.length === 0 || filetype.length === 0) {
+    console.log(
+      "Please update the prefix, format or filetype field with the correct values!"
+    );
+  } else {
+    console.log("Prefix:", prefix, "Format:", format, "Filetype:", filetype);
+    console.log(imageNameOutput.innerText);
+  }
+}
 
 // NOTE Functionality for uploading images from a users file
 
-// document.getElementById("file-input").onchange = function (e) {
-//   var file = e.target.files[0];
-//   if (file && file.name) {
-//     EXIF.getData(file, function () {
-//       var data = this.exifdata;
-//       var image = `
-//                 <li style="display: flex; background-color: #f7f7f7">
-//                     <p style="padding: 20px; margin: 0; width: 200px; height: 200px;">${
-//                       1 + "."
-//                     }</p>
-//                     <div style="padding: 20px; object-fit: cover;">
-//                         <img width="${data["PixelYDimension"] * 0.1}" height="${
-//         data["PixelXDimension"] * 0.1
-//       }"  src="${URL.createObjectURL(file)}" alt="${file.name}">
-//                     </div>
-//                     <p style="padding: 20px; margin: 0; width: 200px; height: 200px;">${
-//                       file.name
-//                     }</p>
-//                 </li>`;
-//       displayImages.innerHTML = image;
-//     });
-//   }
-// };
+document.getElementById("file-input").onchange = function (e) {
+  displayImages.style.display = "block";
+  var file = e.target.files[0];
+  if (file && file.name) {
+    EXIF.getData(file, function () {
+      console.log(this);
+      const image = `
+        <li class="image-list">
+            <div class="image-number"><span style="width: 100%;">${
+              1 + "."
+            }</span>
+            </div>
+            <div style="object-fit: cover;">
+                <img src="${URL.createObjectURL(file)}" alt="${file.name}">
+            </div>
+            <div style="width: unset;" class="image-name">
+                <span>${file.name}</span>
+            </div>
+        </li>`;
+      displayImages.innerHTML = image;
+    });
+  }
+};

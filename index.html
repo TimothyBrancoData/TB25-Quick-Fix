@@ -42,15 +42,17 @@
                 <div id="input-file-type">
                     <label class="kulim-park-regular">Select a file type</label>
                     <div class="file-type-group" id="file-type">
-                        <button class="jpg-file-type-btn kulim-park-regular" value=".jpg" type="button">JPG</button>
-                        <button class="png-file-type-btn kulim-park-regular" value=".png" type="button">PNG</button>
+                        <button id="jpg-file-type-btn" class="jpg-file-type-btn kulim-park-regular" value=".jpg"
+                            type="button">JPG</button>
+                        <button id="png-file-type-btn" class="png-file-type-btn kulim-park-regular" value=".png"
+                            type="button">PNG</button>
                     </div>
                 </div>
             </div>
             <div id="preview-naming" class="kulim-park-regular">
                 <label>Image naming preview</label>
                 <div class="preview-box">
-                    <span id="image-name-output" style="font-size: 13.33px; color: #6b6b6b;"></span>
+                    <span class="default-font-size" id="image-name-output" style="color: #6b6b6b;"></span>
                 </div>
             </div>
             <div class="file-input-box">
@@ -59,43 +61,15 @@
             </div>
         </article>
         <article>
-            <div style="  padding: 10px 20px; border: 1px solid #949494;  border-radius: 4px;">
-                <table>
-                    <tr class="kulim-park-regular">
-                        <th class="column-title">#No</th>
-                        <th class="column-title">Image</th>
-                        <th class="column-title">Name</th>
-                    </tr>
-                </table>
+            <div class="column-bar">
+                <ul class="flex-1 kulim-park-regular">
+                    <li class="column-width column-title">#No</li>
+                    <li class="column-width column-title">Image</li>
+                    <li style="width: 50px; margin: 0px 20px;" class="column-title">Name</li>
+                </ul>
             </div>
-            <!-- <ul id="display-images">
-            </ul> -->
-            <ul class="kulim-park-regular" style=" margin: 20px 0px; border-radius: 4px; border: 1px solid #949494;">
-                <li style="display: flex;">
-                    <div style="width: 200px;"><span>1</span></div>
-                    <div style="width: 200px;">
-                        <img src="./assets/creasted-pigeon-001.jpg" alt="image1">
-                    </div>
-                    <span style="width: 200px;">IMG_001.png</span>
-                </li>
-                <li>
-                    <span>2</span>
-                    <div>
-                        <img src="./assets/rainbow-lorikeet-001.jpg" alt="image2">
-                    </div>
-                    <span>IMG_002.png</span>
-                </li>
-                <li>
-                    <span>3</span>
-                    <div>
-                        <img src="./assets/crimson-rosella-001.jpg" alt="image3">
-                    </div>
-                    <span>IMG_003.png</span>
-                </li>
-            </ul>
-            <button class="kulim-park-regular"
-                style="width: 100%; padding: 10px 15px; background-color: #D1FF51; border-radius: 4px; border: 1px solid #3a3a3a;">Submit
-                and
+            <ul id="display-images" class="kulim-park-regular"></ul>
+            <button onclick="submitNameChange()" class="kulim-park-regular" id="submit-download">Submit and
                 Download</button>
         </article>
     </main>
