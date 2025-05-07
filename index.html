@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An application for an user to edit the metadata of multiple image files.">
+    <meta name="author" content="Timothy Branco">
+    <title>EXIF Quick Fix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <main style="width: 800px; margin: auto;">
+        <h1 class="kulim-park-thick">EXIF Quick Fix</h1>
+        <p class="kulim-park-regular">An application for an user to edit the metadata of multiple image files.</p>
+        <article>
+            <div style="display: flex; justify-content: space-between; margin: 20px 0px;">
+                <div id="input-prefix-type">
+                    <label class="kulim-park-regular">Prefix type</label>
+                    <div>
+                        <input class="prefix-input" type="text" required maxlength="20" placeholder="IMG_">
+                    </div>
+                </div>
+                <div id="input-format-type">
+                    <label class="kulim-park-regular">Format type</label>
+                    <div>
+                        <select class="selection-box" name="format-type" id="format-type">
+                            <option value="0">1</option>
+                            <option value="00">2</option>
+                            <option value="000">3</option>
+                            <option value="0000">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="input-file-type">
+                    <label class="kulim-park-regular">Select a file type</label>
+                    <div class="file-type-group" id="file-type">
+                        <button class="jpg-file-type-btn kulim-park-regular" value=".jpg" type="button">JPG</button>
+                        <button class="png-file-type-btn kulim-park-regular" value=".png" type="button">PNG</button>
+                    </div>
+                </div>
+            </div>
+            <div id="preview-naming" class="kulim-park-regular">
+                <label>Image naming preview</label>
+                <div class="preview-box">
+                    <span id="image-name-output" style="font-size: 13.33px; color: #6b6b6b;"></span>
+                </div>
+            </div>
+            <div class="file-input-box">
+                <span class="kulim-park-regular" style="position: absolute;">Upload file here</span>
+                <input id="file-input" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </article>
+        <article>
+            <div style="  padding: 10px 20px; border: 1px solid #949494;  border-radius: 4px;">
+                <table>
+                    <tr class="kulim-park-regular">
+                        <th class="column-title">#No</th>
+                        <th class="column-title">Image</th>
+                        <th class="column-title">Name</th>
+                    </tr>
+                </table>
+            </div>
+            <!-- <ul id="display-images">
+            </ul> -->
+            <ul class="kulim-park-regular" style=" margin: 20px 0px; border-radius: 4px; border: 1px solid #949494;">
+                <li style="display: flex;">
+                    <div style="width: 200px;"><span>1</span></div>
+                    <div style="width: 200px;">
+                        <img src="./assets/creasted-pigeon-001.jpg" alt="image1">
+                    </div>
+                    <span style="width: 200px;">IMG_001.png</span>
+                </li>
+                <li>
+                    <span>2</span>
+                    <div>
+                        <img src="./assets/rainbow-lorikeet-001.jpg" alt="image2">
+                    </div>
+                    <span>IMG_002.png</span>
+                </li>
+                <li>
+                    <span>3</span>
+                    <div>
+                        <img src="./assets/crimson-rosella-001.jpg" alt="image3">
+                    </div>
+                    <span>IMG_003.png</span>
+                </li>
+            </ul>
+            <button class="kulim-park-regular"
+                style="width: 100%; padding: 10px 15px; background-color: #D1FF51; border-radius: 4px; border: 1px solid #3a3a3a;">Submit
+                and
+                Download</button>
+        </article>
+    </main>
+    <script type="text/javascript" src="./js/exif.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+</body>
+
+</html>

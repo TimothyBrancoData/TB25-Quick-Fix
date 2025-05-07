@@ -1,0 +1,21 @@
+{
+  "name": "tb25-quick-fix",
+  "version": "1.0.0",
+  "description": "An application using EXIF.js to edit metadata from various image types.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "EXIF",
+    "metadata",
+    "HTML",
+    "CSS.",
+    "Javascript"
+  ],
+  "author": "Timothy Branco",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^4.1.5"
+  }
+}
